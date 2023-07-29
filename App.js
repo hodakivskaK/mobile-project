@@ -5,8 +5,6 @@ import { LoginScreen } from './src/screens/LoginScreen';
 import backgroundPhoto from './src/Image/Background.png'
 import { useFonts } from 'expo-font';
 
-import {FontApp} from './src/assets/font'
-
 
 
 export default function App() {
@@ -25,8 +23,8 @@ export default function App() {
   
       <ImageBackground source={backgroundPhoto} resizeMode="cover" style={styles.image}>
         <View style={styles.wrapper}>
-            {/* <RegistrationScreen /> */}
-          <LoginScreen/>
+            <RegistrationScreen />
+          {/* <LoginScreen/> */}
            </View>
          </ImageBackground>
   
@@ -39,7 +37,6 @@ const styles = StyleSheet.create({
    
     position: "relative",
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     
     

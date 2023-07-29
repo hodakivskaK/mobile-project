@@ -1,54 +1,90 @@
 import { useState } from 'react';
 import {
-    Text, Button, TextInput,
-    View, StyleSheet, Image,
+    Text, TextInput, Span,
+    View, StyleSheet,
     TouchableOpacity, KeyboardAvoidingView, Platform,
     TouchableWithoutFeedback, Keyboard
 } from 'react-native';
 
-import {FontApp} from '../assets/font'
-
-
 
 export const LoginScreen = () => {
-    const [login, setChangeLogin] = useState('');
     const [mail, setChangeMail] = useState('');
-    const [password, setChangePassword] = useState('');
+  const [password, setChangePassword] = useState('');
+  const [isFocusedEmail, setIsFocusedEmail] = useState(false);
+  const [isFocusedPassword, setIsFocusedPassword] = useState(false);
+  const [isVisiblePassword, setIsVisiblePassword] = useState(false);
 
-const signIn = () => {
-    console.debug(Platform.OS);
+const signUp = () => {
+  console.debug("Database", `${mail} + ${password}`);
+  };
+  
+  const togglePassInput = () => {
+ 
     };
     
     
   return (
      
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-    
+     <KeyboardAvoidingView
+                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+                style={styles.container}>
       
         <View style={styles.inner} >
             <Text style={styles.header}>Увійти</Text>
             
-               <KeyboardAvoidingView
-                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-                style={styles.container}>
-            <View>
-                       <TextInput placeholder="Пошта" value={mail}
-                        onChangeNail={setChangeMail}
-              style={styles.input} />
-            
-            <TextInput placeholder="Пароль" value={password}
-                        onChangeNail={setChangePassword}
-                        style={styles.input}/>
+              
+          <View style={styles.form}>
 
+                           <TextInput
+            value={mail}
+            onChangeText={setChangeMail}
+            placeholder="Mail"
+     
+              onFocus={() => setIsFocusedEmail(true)}
+              onBlur={() => setIsFocusedEmail(false)}
+         style={[ styles.input, {
+             borderColor: isFocusedEmail
+                 ? '#FF6C00'
+                 : '#E8E8E8',
+             borderBottomWidth: 1,
+         }]}
+                     />
+
+            <View style={styles.containerPassword}> 
+               <TextInput
+            value={password}
+            onChangeText={setChangePassword}
+            placeholder="Password"
+            
+              secureTextEntry
+               onFocus={() => setIsFocusedPassword(true)}
+              onBlur={() => setIsFocusedPassword(false)}
+              style={[ styles.input, {
+             borderColor: isFocusedPassword
+                 ? '#FF6C00'
+                 : '#E8E8E8',
+             borderBottomWidth: 1,
+         }]}
+              /> 
+              
+
+             <TouchableOpacity style={styles.visible} onPress={signUp}>
+                  <Text style={styles.visibleTitle}>Показати</Text>
+              </TouchableOpacity>
             </View>
-             </KeyboardAvoidingView>
+
+         </View>
          
-                <TouchableOpacity style={styles.btn} onPress={signIn}>
+             
+         
+                <TouchableOpacity style={styles.btn} onPress={signUp}>
                   <Text style={styles.buttonTitle}>Увійти</Text>
              </TouchableOpacity>
             
                   <Text style={styles.link} >Немає акаунту? Зареєструватися</Text>
-      </View>
+        </View>
+      </KeyboardAvoidingView>
       </TouchableWithoutFeedback>
 
   );
@@ -56,6 +92,14 @@ const signIn = () => {
 }
 
 const styles = StyleSheet.create({
+  container: {
+     
+    position: "relative",
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: "flex-end"
+    
+  },
   
   inner: {
   
@@ -91,11 +135,16 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#E8E8E8",
     borderRadius: 10,
-    },
+  },
+
+  form: {
+    marginBottom: 43,
+  },
+
   btn: {
     width: 345,
    
-    marginTop: 43,
+    // marginTop: 43,
     marginBottom: 16,
         backgroundColor: '#FF6C00',
         borderRadius: 100,
@@ -120,6 +169,26 @@ const styles = StyleSheet.create({
         fontSize: 16,
         textAlign: "center",
         color: "#1B4371",
-    },
+  },
+      
+  containerPassword: {
+    position: "relative"
+  },
+
+  visible: {
+    position: "absolute",
+    right: 26,
+    top: "35%",
+
+  },
+      
+  visibleTitle: {
+      fontFamily:  "Roboto-Regular",
+fontSize: 16,
+fontWeight: 400,
+lineHeight: 19,
+textAlign: "center",
+color: "#1B4371",
+    }
 });
 
