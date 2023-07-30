@@ -34,12 +34,12 @@ const signIn = () => {
                   
                   
       
-                  <View style={styles.inner} >
+        <View style={styles.inner} >
                       
-                        <View style={styles.avatarContainer}>
-                        <Image source={emptyAvatar} style={styles.image} />
-                    <AntDesign name="pluscircleo" size={24} color="#FF6C00" style={styles.avatarIcon}/>             
-                      </View>
+              <View style={styles.avatarContainer}>
+                <Image source={emptyAvatar} style={styles.image} />
+                <AntDesign name="pluscircleo" size={24} color="#FF6C00" style={styles.avatarIcon}/>             
+              </View>
                       
                       
         <Text style={styles.header} >Реєстрація</Text>
@@ -106,7 +106,7 @@ const signIn = () => {
               <Text style={styles.buttonTitle}>Зареєстуватися</Text>
             </TouchableOpacity>
             
-                      <Text style={styles.link}> Вже є акаунт? Увійти</Text>
+            <Text style={styles.link}> Вже є акаунт? Увійти</Text>
                       
         </View>
       </KeyboardAvoidingView>
@@ -119,59 +119,65 @@ const signIn = () => {
 
 const styles = StyleSheet.create({
   container: {
-     
-    
     flex: 1,
-    alignItems: 'center',
-    justifyContent: "flex-end"
+    justifyContent: "flex-end",
     
   },
   
   inner: {
-    position: "relative",
-    maxHeight: 550,
+    maxHeight: 600,
     marginBottom: 0,
+    maxWidth: "100%",
     padding: 24,
     flex: 1,
-    width: 390,
+   
     backgroundColor: "#fff",
     alignItems: "center",
-    paddingBottom: 30,
+
 
     borderTopLeftRadius: "25px",
     borderTopRightRadius: "25px",
     },
   
   avatarContainer: {
-     marginTop: -85,
+    position: "relative",
+    width: 120,
+    marginTop: -85,
+    marginHorizontal: "20%",
     },
 
     avatarIcon: {
         position: "absolute",
         width: 30,
         height: 30,
-        right: -15,
-        top: 70,
+      top: "50%",
+      right: -20,
+        
     },
     
 
   header: {
-        fontFamily: "Roboto-Medium",
+    fontFamily: "Roboto-Medium",
+    textAlign: "center",
         fontWeight: 500,
         fontSize: 30,
         marginTop: 32,
         marginBottom: 32,
   },
   input: {
-    width: 343,
+    minWidth: "100%",
     height: 50,
-    margin: 12,
-    borderWidth: 1,
+
+    marginLeft: 16,
+    marginRight: 16,
+    marginBottom: 12,
+    marginTop:12,
 
     padding: 10,
     color: "#BDBDBD",
-    backgroundColor: "#F6F6F6",
+
     borderWidth: 1,
+    backgroundColor: "#F6F6F6",
     borderColor: "#E8E8E8",
     borderRadius: 10,
   },
@@ -181,10 +187,11 @@ const styles = StyleSheet.create({
   },
 
   btn: {
-    width: 345,
-   
-    // marginTop: 43,
+    width: "100%",
+    marginLeft: 16,
+    marginRight: 16,
     marginBottom: 16,
+
         backgroundColor: '#FF6C00',
         borderRadius: 100,
        
@@ -208,6 +215,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         textAlign: "center",
         color: "#1B4371",
+      
   },
       
   containerPassword: {

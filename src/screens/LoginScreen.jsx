@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
   },
   
   inner: {
-  
+    maxWidth: "100%",
     maxHeight: 450,
     marginBottom: 0,
     padding: 24,
@@ -124,9 +124,12 @@ const styles = StyleSheet.create({
         marginBottom: 32,
   },
   input: {
-    width: 343,
+    minWidth: "100%",
     height: 50,
-    margin: 12,
+    marginLeft: 16,
+    marginRight: 16,
+    marginBottom: 12,
+    marginTop:12,
     borderWidth: 1,
 
     padding: 10,
@@ -143,8 +146,7 @@ const styles = StyleSheet.create({
 
   btn: {
     width: 345,
-   
-    // marginTop: 43,
+  
     marginBottom: 16,
         backgroundColor: '#FF6C00',
         borderRadius: 100,
